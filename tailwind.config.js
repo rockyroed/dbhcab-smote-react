@@ -11,19 +11,19 @@ export default {
 		extend: {
 			colors: {
 				primary: {
-					100: "903FCF"
+					100: "#903FCF"
 				},
 				secondary: {
-					100: "C186EF"
+					100: "#C186EF"
 				},
 				accent: {
-					100: "AD4CF8"
+					100: "#AD4CF8"
 				},
 				text: {
-					100: "0D0910"
+					100: "#0D0910"
 				},
 				background: {
-					100: "F6F1FA"
+					100: "#F6F1FA"
 				}
 			}
 		}

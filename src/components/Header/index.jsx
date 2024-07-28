@@ -13,7 +13,7 @@ const Index = ({title1, title2, size, home}) => {
     return (
         <div className="flex flex-row items-center justify-center w-full">
             {home ? (
-                <div className="flex flex-col items-center justify-center gap-y-[30px] p-20">
+                <div className="flex flex-col items-center justify-center gap-y-[30px]">
                 <span className="font-extrabold text-5xl">
                     <span className="text-7xl text-primary-100">DB</span>
                     HCAB-SMOTE

@@ -2,7 +2,7 @@ import Classification from "./components/Classification";
 
 const App = () => {
 	return (
-		<Classification />
+		<Classification sampling='DBHCAB-SMOTE'/>
 	)
 }
 

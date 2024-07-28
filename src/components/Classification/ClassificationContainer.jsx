@@ -3,7 +3,7 @@
  * renders a customizable result container
  * 
  * props:
- * - percentage1, percentage 2 (string): indicates the percentage of the bar e.g 70 and 30
+ * - percentage1, percentage2 (string): indicates the percentage of the bar e.g 70 and 30
  * - classification1, classification2 (string): indicates the label e.g Toxic and Non-Toxic
  * - conWidth (string): indicates the width of the container
  * - conHeight (string): indicates the height of the container

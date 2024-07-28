@@ -18,8 +18,6 @@ const Index = ({ sampling, percentage1, percentage2, classification1, classifica
 				percentage2={percentage2}
 				classification1={classification1}
 				classification2={classification2}
-				conWidth="450"
-				conHeight="400"
 			/>
 		</div>
 	);

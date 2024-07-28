@@ -14,12 +14,10 @@ const ClassificationContainer = ({
 	percentage2,
 	classification1,
 	classification2,
-	conWidth,
-	conHeight
 }) => {
 	return (
 		<div
-			className={`border-background-white bg-background-100 text-text-100 border-2 w-[${conWidth}px] h-[${conHeight}px] rounded-[24px] flex flex-col gap-y-[8px] items-center p-5 shadow-xl`}
+			className={`border-background-white bg-background-100 text-text-100 border-2 rounded-[24px] w-[420px] h-[450px] flex flex-col gap-y-[8px] items-center p-5 shadow-xl`}
 		>
 			<h1 className="font-normal text-text-101 text-[30px] uppercase">{classification1}</h1>
 			<h1 className="font-semibold text-text-101 text-[50px]">{percentage1}%</h1>

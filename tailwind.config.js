@@ -20,7 +20,8 @@ export default {
 					100: "#AD4CF8"
 				},
 				text: {
-					100: "#0D0910"
+					100: "#0D0910",
+					101: "#db4251"
 				},
 				background: {
 					100: "#F6F1FA"

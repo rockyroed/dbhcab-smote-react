@@ -4,13 +4,11 @@
  *
  * props:
  * - icon (string): icon that will be used using Google Material Icons
- * - size (string): the size of the icon
- * - color (string): indicates the color of the icon 
  */
 
-const Index = ({ icon, size, color }) => {
+const Index = ({ icon, className }) => {
 	return (
-		<span class={`material-symbols-outlined text-${color}-100 text-[${size}px]`}>{icon}</span>
+		<span className={`material-symbols-outlined ${className}`}>{icon}</span>
 	)
 }
 export default Index;

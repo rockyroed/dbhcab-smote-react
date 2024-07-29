@@ -17,7 +17,7 @@ const ClassificationContainer = ({
 }) => {
 	return (
 		<div
-			className={`border-background-white bg-background text-text border-2 rounded-[24px] w-[420px] h-[450px] flex flex-col gap-y-[8px] items-center p-5 shadow-xl`}
+			className={`border-background-white bg-white text-text border-2 rounded-[24px] w-[420px] h-[450px] flex flex-col gap-y-[8px] items-center p-5 shadow-xl`}
 		>
 			<h1 className="font-normal text-red text-[30px] uppercase">{classification1}</h1>
 			<h1 className="font-semibold text-red text-[50px]">{percentage1}%</h1>

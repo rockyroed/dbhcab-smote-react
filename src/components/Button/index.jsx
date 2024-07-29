@@ -4,7 +4,6 @@
  *
  * props:
  * - text (string): the name of the button.
- * - classifier (string): The name of the classifier.
  */
 
 const Index = ({ text }) => {

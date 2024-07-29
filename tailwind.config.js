@@ -30,6 +30,9 @@ export default {
 				},
 				green: {
 					DEFAULT: "#207234"
+				},
+				gray: {
+					DEFAULT: "#B0B0B0"
 				}
 			},
 			fontFamily: {

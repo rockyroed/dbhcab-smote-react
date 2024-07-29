@@ -32,15 +32,15 @@ const App = () => {
 					sampling="DBHCAB-SMOTE"
 					percentage1="95"
 					percentage2="95"
-					classification1="TOXIC"
-					classification2="NON-TOXIC"
+					classification1="HATE"
+					classification2="NON-HATE"
 				/>
 				<Classification
 					sampling="HCAB-SMOTE"
 					percentage1="90"
 					percentage2="90"
-					classification1="TOXIC"
-					classification2="NON-TOXIC"
+					classification1="HATE"
+					classification2="NON-HATE"
 				/>
 			</div>
 		</div>

@@ -20,12 +20,20 @@ export default {
 					100: "#AD4CF8"
 				},
 				text: {
-					100: "#0D0910",
-					101: "#db4251"
+					100: "#0D0910"
 				},
 				background: {
 					100: "#F6F1FA"
+				},
+				red: {
+					100: "#CB3232"
+				},
+				green: {
+					100: "#207234"
 				}
+			},
+			fontFamily: {
+				sans: ['Source Sans Pro', 'ui-sans-serif', 'system-ui'],
 			}
 		}
 	},

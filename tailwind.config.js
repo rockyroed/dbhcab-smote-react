@@ -11,25 +11,25 @@ export default {
 		extend: {
 			colors: {
 				primary: {
-					100: "#903FCF"
+					DEFAULT: "#903FCF"
 				},
 				secondary: {
-					100: "#C186EF"
+					DEFAULT: "#C186EF"
 				},
 				accent: {
-					100: "#AD4CF8"
+					DEFAULT: "#AD4CF8"
 				},
 				text: {
-					100: "#0D0910"
+					DEFAULT: "#0D0910"
 				},
 				background: {
-					100: "#F6F1FA"
+					DEFAULT: "#F6F1FA"
 				},
 				red: {
-					100: "#CB3232"
+					DEFAULT: "#CB3232"
 				},
 				green: {
-					100: "#207234"
+					DEFAULT: "#207234"
 				}
 			},
 			fontFamily: {

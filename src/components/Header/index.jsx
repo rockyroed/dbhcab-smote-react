@@ -14,7 +14,7 @@ const Index = ({title1, title2, home}) => {
             {home ? (
                 <div className="flex flex-col items-center justify-center gap-y-[30px]">
                 <span className="font-bold text-5xl">
-                    <span className="text-7xl text-primary-100">DB</span>
+                    <span className="text-7xl text-primary">DB</span>
                     HCAB-SMOTE
                 </span>
                 <span>
@@ -23,7 +23,7 @@ const Index = ({title1, title2, home}) => {
             </div>
             ) : (
             <div className="flex flex-row ">
-                <h1 className={`font-bold text-[48px] text-primary-100 uppercase mr-3`}>{title1}</h1>
+                <h1 className={`font-bold text-[48px] text-primary uppercase mr-3`}>{title1}</h1>
                 <h1 className={`font-bold text-[48px] uppercase`}>{title2}</h1>
             </div>
             )}

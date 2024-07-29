@@ -10,7 +10,7 @@
 const Index = ({ icon, classifier }) => {
 	return (
 		<div className="border-primary bg-background text-text hover:bg-primary hover:text-white cursor-pointer border-2 w-[520px] h-[320px] rounded-[24px] flex flex-col gap-y-[16px] justify-center items-center">
-			<span class="material-symbols-outlined text-[40px]">{icon}</span>
+			<span className="material-symbols-outlined text-[40px]">{icon}</span>
 			<h1 className="font-semibold text-[40px]">{classifier}</h1>
 		</div>
 	);

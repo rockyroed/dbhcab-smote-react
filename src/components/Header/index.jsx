@@ -9,7 +9,7 @@
  * - size (string): The size of the titles
  */
 
-const Index = ({title1, title2, size, home}) => {
+const Index = ({title1, title2, home}) => {
     return (
         <div className="flex flex-row items-center justify-center w-full">
             {home ? (
@@ -24,8 +24,8 @@ const Index = ({title1, title2, size, home}) => {
             </div>
             ) : (
             <div className="flex flex-row ">
-                <h1 className={`font-bold text-[${size}px] text-primary uppercase mr-3`}>{title1}</h1>
-                <h1 className={`font-bold text-[${size}px] uppercase`}>{title2}</h1>
+                <h1 className={`font-bold text-[48px] text-primary uppercase mr-3`}>{title1}</h1>
+                <h1 className={`font-bold text-[48px] uppercase`}>{title2}</h1>
             </div>
             )}
         </div>

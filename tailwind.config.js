@@ -31,6 +31,9 @@ export default {
 				green: {
 					100: "#207234"
 				}
+			},
+			fontFamily: {
+				sans: ['Source Sans Pro', 'ui-sans-serif', 'system-ui'],
 			}
 		}
 	},

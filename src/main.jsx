@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App.jsx";
 import "./index.css";
 import ToxicComment from "./pages/ToxicComment"
+import HateSpeech from "./pages/HateSpeech"
 
 const router = createBrowserRouter([
 	{
@@ -13,6 +14,10 @@ const router = createBrowserRouter([
 	{
 		path: "/toxic-comment",
 		element: <ToxicComment />
+	},
+	{
+		path: "/hate-speech",
+		element: <HateSpeech />
 	}
 ]);
 

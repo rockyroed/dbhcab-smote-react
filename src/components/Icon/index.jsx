@@ -6,9 +6,14 @@
  * - icon (string): icon that will be used using Google Material Icons
  */
 
-const Index = ({ icon, className }) => {
+import React from "react";
+import { Link } from "react-router-dom";
+
+const Index = ({ icon, className, link }) => {
 	return (
-		<span className={`material-symbols-outlined ${className}`}>{icon}</span>
+		<Link to = {link}>
+			<span className={`material-symbols-outlined ${className}`}>{icon}</span>
+		</Link>
 	)
 }
 export default Index;

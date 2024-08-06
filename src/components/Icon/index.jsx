@@ -4,13 +4,16 @@
  *
  * props:
  * - icon (string): icon that will be used using Google Material Icons
- * - size (string): the size of the icon
- * - color (string): indicates the color of the icon 
  */
 
-const Index = ({ icon, size, color }) => {
+import React from "react";
+import { Link } from "react-router-dom";
+
+const Index = ({ icon, className, link }) => {
 	return (
-		<span class={`material-symbols-outlined text-${color}-100 text-[${size}px]`}>{icon}</span>
+		<Link to = {link}>
+			<span className={`material-symbols-outlined ${className}`}>{icon}</span>
+		</Link>
 	)
 }
 export default Index;

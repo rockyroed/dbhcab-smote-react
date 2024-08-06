@@ -8,10 +8,10 @@ const Index = () => {
 	return (
 		<div className="flex flex-col my-[64px] mx-[160px]">
 			<div className="flex flex-row justify-between items-center mb-[64px]">
-				<Icon className="text-gray text-[40px]" icon="home" />
+				<Icon className="text-gray text-[40px]" icon="home" link="/"/>
 				<div className="flex items-center gap-[24px]">
 					<Header title1="TOXIC" title2="COMMENT" />
-					<Icon className="text-accent text-[40px]" icon="sync_alt" />
+					<Icon className="text-accent text-[40px]" icon="sync_alt" link="/hate-speech" />
 				</div>
 				<div></div>
 			</div>

@@ -8,10 +8,10 @@ const App = () => {
 	return (
 		<div className="flex flex-col justify-center min-h-screen my-[64px] mx-[160px]">
 			<div className="flex flex-row justify-center items-center mb-[64px]">
-				<Icon className="text-gray text-[40px] cursor-pointer absolute left-[160px]" icon="home" />
+				<Icon className="text-gray text-[40px] cursor-pointer absolute left-[160px]" icon="home" link="/" />
 				<div className="flex items-center gap-[24px]">
 					<Header title1="HATE" title2="SPEECH" />
-					<Icon className="text-[40px] text-accent cursor-pointer" icon="sync_alt" />
+					<Icon className="text-[40px] text-accent cursor-pointer" icon="sync_alt" link="/toxic-comment"/>
 				</div>
 			</div>
 

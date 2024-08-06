@@ -6,8 +6,8 @@ const App = () => {
 		<div className="flex flex-col items-center mt-[64px]">
 			<Header home={true}/>
 			<div className="flex gap-5 mt-[64px]">
-				<Classifier icon="chat_error" classifier="TOXIC COMMENT"/>
-				<Classifier icon="voice_over_off" classifier="HATE SPEECH"/>
+				<Classifier icon="chat_error" classifier="TOXIC COMMENT" link="/toxic-comment"/>
+				<Classifier icon="voice_over_off" classifier="HATE SPEECH" link="/hate-speech"/>
 			</div>
 		</div>
 		

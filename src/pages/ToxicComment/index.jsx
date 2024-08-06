@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import Header from "../../components/Header";
 import Icon from "../../components/Icon";
 import TextArea from "../../components/TextArea";
@@ -9,6 +9,7 @@ const Index = () => {
 	const [showResults, setShowResults] = useState(false); // State to manage the visibility of the results
 	const [buttonText, setButtonText] = useState("CLASSIFY"); // State to manage the button text
 	const [isDisabled, setIsDisabled] = useState(false); // State to manage the disabled state of the TextArea
+	const resultsRef = useRef(null); // Reference to the results container
 
 	const handleClassifyClick = () => {
 		if (buttonText === "CLASSIFY") {
@@ -19,6 +20,13 @@ const Index = () => {
 			window.location.reload(); // Refresh the page
 		}
 	};
+
+	// Scroll to the results when showResults becomes true
+	useEffect(() => {
+		if (showResults) {
+			resultsRef.current.scrollIntoView({ behavior: "smooth" });
+		}
+	}, [showResults]);
 
 	return (
 		<div className="flex flex-col my-[64px] mx-[160px]">
@@ -35,7 +43,7 @@ const Index = () => {
 				<Button text={buttonText} onClick={handleClassifyClick} /> {/* Use buttonText state */}
 			</div>
 			{showResults && (
-				<>
+				<div ref={resultsRef}>
 					<div className="border my-[64px]"></div>
 
 					<div className="flex font-semibold justify-center text-[40px] mb-[56px]">
@@ -58,7 +66,7 @@ const Index = () => {
 							classification2="NON-TOXIC"
 						/>
 					</div>
-				</>
+				</div>
 			)}
 		</div>
 	);

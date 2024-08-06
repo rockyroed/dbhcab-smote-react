@@ -1,0 +1,16 @@
+{
+    "routes": [
+        {
+            "src": "/",
+            "dest": "/"
+        },
+        {
+            "src": "/toxic-comment",
+            "dest": "/"
+        },
+        {
+            "src": "/hate-speech",
+            "dest": "/"
+        }
+    ]
+}

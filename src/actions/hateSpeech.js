@@ -1,12 +1,7 @@
 export const query = async (data) => {
-    const apiKey = import.meta.env.VITE_HUGGING_FACE_ACCESS_TOKEN;
     const response = await fetch(
-        "https://api-inference.huggingface.co/models/facebook/roberta-hate-speech-dynabench-r4-target",
+        import.meta.env.VITE_HATE_SPEECH_API,
         {
-            headers: {
-                Authorization: `Bearer ${apiKey}`,
-                "Content-Type": "application/json",
-            },
             method: "POST",
             body: JSON.stringify(data),
         }

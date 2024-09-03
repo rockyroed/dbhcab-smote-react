@@ -23,4 +23,8 @@ dist-ssr
 *.sln
 *.sw?
 
+# Environment variables
 .env
+
+# Random fuse_hidden files
+.fuse_hidden*

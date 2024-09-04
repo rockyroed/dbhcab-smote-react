@@ -4,22 +4,44 @@ import Icon from "../../components/Icon";
 import TextArea from "../../components/TextArea";
 import Button from "../../components/Button";
 import Classification from "../../components/Classification";
+import { query } from "../../actions/hateSpeech";
 
 const App = () => {
 	const [showResults, setShowResults] = useState(false); // State to manage the visibility of the results
 	const [buttonText, setButtonText] = useState("CLASSIFY"); // State to manage the button text
 	const [isDisabled, setIsDisabled] = useState(false); // State to manage the disabled state of the TextArea
+	const [input, setInput] = useState(); // State to manage the input of the user
 	const resultsRef = useRef(null); // Reference to the results container
+	const [hate, setHate] = useState(); // State to manage hate percentage
+	const [notHate, setNotHate] = useState(); // State to manage not hate percentage
 
 	const handleClassifyClick = () => {
 		if (buttonText === "CLASSIFY") {
-			setShowResults(true); // Show classification results
-			setButtonText("CLASSIFY AGAIN"); // Change button text
+			setButtonText("CLASSIFYING...");
 			setIsDisabled(true); // Disable TextArea
+			query({ "inputs": input }).then((response) => { // Classify
+				const result = response[0];
+				const hateScore = result.find(item => item.label === "hate")?.score || 0;
+				const notHateScore = result.find(item => item.label === "nothate")?.score || 0;
+				
+				setHate(Math.min(100, Math.round(hateScore * 100)));
+				setNotHate(Math.min(100, Math.round(notHateScore * 100)));
+				
+				setShowResults(true); // Show classification results
+				setButtonText("CLASSIFY AGAIN"); // Change button text
+			}).catch((error) => {
+				// Handle any errors that occur during the query
+				console.error("Error during classification:", error);
+				setButtonText("CLASSIFY"); // Reset button text on error
+			});
 		} else {
 			window.location.reload(); // Refresh the page
 		}
-	};
+	};	
+	
+	const handleInputChange = (event) => {
+		setInput(event.target.value);
+	}
 
 	// Scroll to the results when showResults becomes true
 	useEffect(() => {
@@ -39,10 +61,10 @@ const App = () => {
 				<div></div>
 			</div>
 
-			<TextArea isDisabled={isDisabled} /> {/* Pass the disabled state to TextArea */}
+			<TextArea isDisabled={isDisabled} input={input} handleInputChange={handleInputChange} />
 
 			<div className="flex justify-center mt-[56px]">
-				<Button text={buttonText} onClick={handleClassifyClick} /> {/* Use buttonText state */}
+				<Button text={buttonText} onClick={handleClassifyClick} />
 			</div>
 
 			{showResults && ( // Conditionally render the classification results
@@ -63,8 +85,8 @@ const App = () => {
 						/>
 						<Classification
 							sampling="HCAB-SMOTE"
-							percentage1="90"
-							percentage2="90"
+							percentage1={hate}
+							percentage2={notHate}
 							classification1="HATE"
 							classification2="NON-HATE"
 						/>

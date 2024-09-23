@@ -13,19 +13,17 @@ const App = () => {
 	const [input, setInput] = useState(); // State to manage the input of the user
 	const resultsRef = useRef(null); // Reference to the results container
 	const [hate, setHate] = useState(); // State to manage hate percentage
-	const [notHate, setNotHate] = useState(); // State to manage not hate percentage
+	const [nonHate, setNonHate] = useState(); // State to manage not hate percentage
 
 	const handleClassifyClick = () => {
 		if (buttonText === "CLASSIFY") {
 			setButtonText("CLASSIFYING...");
 			setIsDisabled(true); // Disable TextArea
-			query({ "inputs": input }).then((response) => { // Classify
-				const result = response[0];
-				const hateScore = result.find(item => item.label === "hate")?.score || 0;
-				const notHateScore = result.find(item => item.label === "nothate")?.score || 0;
-				
-				setHate(Math.min(100, Math.round(hateScore * 100)));
-				setNotHate(Math.min(100, Math.round(notHateScore * 100)));
+			query({ "input": input }).then((response) => { // Classify
+				const result = response;
+				console.log(result);
+				setNonHate(result.percentage[0])
+				setHate(result.percentage[1])
 				
 				setShowResults(true); // Show classification results
 				setButtonText("CLASSIFY AGAIN"); // Change button text
@@ -86,7 +84,7 @@ const App = () => {
 						<Classification
 							sampling="HCAB-SMOTE"
 							percentage1={hate}
-							percentage2={notHate}
+							percentage2={nonHate}
 							classification1="HATE"
 							classification2="NON-HATE"
 						/>

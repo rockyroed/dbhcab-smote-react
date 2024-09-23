@@ -13,19 +13,17 @@ const Index = () => {
 	const [input, setInput] = useState(); // State to manage the input of the user
 	const resultsRef = useRef(null); // Reference to the results container
 	const [toxic, setToxic] = useState(); // State to manage hate percentage
-	const [notToxic, setNotToxic] = useState(); // State to manage not hate percentage
+	const [nonToxic, setNonToxic] = useState(); // State to manage not hate percentage
 
 	const handleClassifyClick = () => {
 		if (buttonText === "CLASSIFY") {
 			setButtonText("CLASSIFYING...");
 			setIsDisabled(true); // Disable TextArea
-			query({ "inputs": input }).then((response) => { // Classify
-				const result = response[0];
-				const toxicScore = result.find(item => item.label === "toxic")?.score || 0;
-				const notToxicScore = result.find(item => item.label === "non-toxic")?.score || 0;
-				
-				setToxic(Math.min(100, Math.round(toxicScore * 100)));
-				setNotToxic(Math.min(100, Math.round(notToxicScore * 100)));
+			query({ "input": input }).then((response) => { // Classify
+				const result = response;
+				console.log(result);
+				setNonToxic(result.percentage[0])
+				setToxic(result.percentage[1])
 				
 				setShowResults(true); // Show classification results
 				setButtonText("CLASSIFY AGAIN"); // Change button text
@@ -83,7 +81,7 @@ const Index = () => {
 						<Classification
 							sampling="HCAB-SMOTE"
 							percentage1={toxic}
-							percentage2={notToxic}
+							percentage2={nonToxic}
 							classification1="TOXIC"
 							classification2="NON-TOXIC"
 						/>

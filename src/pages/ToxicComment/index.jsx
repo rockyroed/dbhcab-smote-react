@@ -4,7 +4,7 @@ import Icon from "../../components/Icon";
 import TextArea from "../../components/TextArea";
 import Button from "../../components/Button";
 import Classification from "../../components/Classification";
-import { query } from "../../actions/toxicComment";
+import { hcabsmoteQuery, dbhcabsmoteQuery } from "../../actions/toxicComment";
 
 const Index = () => {
 	const [showResults, setShowResults] = useState(false); // State to manage the visibility of the results
@@ -12,21 +12,36 @@ const Index = () => {
 	const [isDisabled, setIsDisabled] = useState(false); // State to manage the disabled state of the TextArea
 	const [input, setInput] = useState(); // State to manage the input of the user
 	const resultsRef = useRef(null); // Reference to the results container
-	const [toxic, setToxic] = useState(); // State to manage hate percentage
-	const [nonToxic, setNonToxic] = useState(); // State to manage not hate percentage
+	
+	const [hcabToxic, setHcabToxic] = useState();
+	const [hcabNonToxic, setHcabNonToxic] = useState();
+	const [dbhcabToxic, setDbhcabToxic] = useState();
+	const [dbhcabNonToxic, setDbhcabNonToxic] = useState();
 
 	const handleClassifyClick = () => {
 		if (buttonText === "CLASSIFY") {
 			setButtonText("CLASSIFYING...");
 			setIsDisabled(true); // Disable TextArea
-			query({ "input": input }).then((response) => { // Classify
+			hcabsmoteQuery({ "input": input }).then((response) => { // Classify
 				const result = response;
 				console.log(result);
-				setNonToxic(result.percentage[0])
-				setToxic(result.percentage[1])
-				
-				setShowResults(true); // Show classification results
-				setButtonText("CLASSIFY AGAIN"); // Change button text
+				setHcabNonToxic(result.percentage[0])
+				setHcabToxic(result.percentage[1])
+
+				dbhcabsmoteQuery({ "input": input }).then((response) => { // Classify
+					const result = response;
+					console.log(result);
+					
+					setDbhcabNonToxic(result.percentage[0])
+					setDbhcabToxic(result.percentage[1])
+
+					setShowResults(true); // Show classification results
+					setButtonText("CLASSIFY AGAIN"); // Change button text
+				}).catch((error) => {
+					// Handle any errors that occur during the query
+					console.error("Error during DBHCABSMOTE classification:", error);
+					setButtonText("CLASSIFY"); // Reset button text on error
+				});
 			}).catch((error) => {
 				// Handle any errors that occur during the query
 				console.error("Error during classification:", error);
@@ -73,15 +88,15 @@ const Index = () => {
 					<div className="flex justify-between items-center ">
 						<Classification
 							sampling="DBHCAB-SMOTE"
-							percentage1="95"
-							percentage2="95"
+							percentage1={dbhcabToxic}
+							percentage2={dbhcabNonToxic}
 							classification1="TOXIC"
 							classification2="NON-TOXIC"
 						/>
 						<Classification
 							sampling="HCAB-SMOTE"
-							percentage1={toxic}
-							percentage2={nonToxic}
+							percentage1={hcabToxic}
+							percentage2={hcabNonToxic}
 							classification1="TOXIC"
 							classification2="NON-TOXIC"
 						/>

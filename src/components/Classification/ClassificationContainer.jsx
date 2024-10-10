@@ -9,18 +9,33 @@
  * - conHeight (string): indicates the height of the container
  */
 
+import { useState } from "react";
+
 const ClassificationContainer = ({
 	percentage1,
 	percentage2,
 	classification1,
-	classification2,
+	classification2
 }) => {
+	const [classification, setClassification] = useState("");
+	const [classificationPercentage, setClassificationPercentage] = useState(0);
+
 	return (
 		<div
 			className={`border-background-white bg-white text-text border-2 rounded-[24px] w-[420px] h-[450px] flex flex-col gap-y-[8px] items-center p-5 shadow-xl`}
 		>
-			<h1 className="font-normal text-red text-[30px] uppercase">{classification1}</h1>
-			<h1 className="font-semibold text-red text-[50px]">{percentage1}%</h1>
+			{percentage1 > percentage2 ? (
+				<>
+					<h1 className={`font-normal text-red text-[30px] uppercase`}>{classification1}</h1>
+					<h1 className={`font-semibold text-red text-[50px]`}>{percentage1}%</h1>
+				</>
+			) : (
+				<>
+					<h1 className={`font-normal text-green text-[30px] uppercase`}>{classification2}</h1>
+					<h1 className={`font-semibold text-green text-[50px]`}>{percentage2}%</h1>
+				</>
+			)}
+
 			<h1 className="font-semibold text-text text-[17px] pt-10 uppercase">
 				{classification1} | {percentage1}%
 			</h1>

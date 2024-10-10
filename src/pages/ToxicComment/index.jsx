@@ -4,22 +4,42 @@ import Icon from "../../components/Icon";
 import TextArea from "../../components/TextArea";
 import Button from "../../components/Button";
 import Classification from "../../components/Classification";
+import { query } from "../../actions/toxicComment";
 
 const Index = () => {
 	const [showResults, setShowResults] = useState(false); // State to manage the visibility of the results
 	const [buttonText, setButtonText] = useState("CLASSIFY"); // State to manage the button text
 	const [isDisabled, setIsDisabled] = useState(false); // State to manage the disabled state of the TextArea
+	const [input, setInput] = useState(); // State to manage the input of the user
 	const resultsRef = useRef(null); // Reference to the results container
+	const [toxic, setToxic] = useState(); // State to manage hate percentage
+	const [nonToxic, setNonToxic] = useState(); // State to manage not hate percentage
 
 	const handleClassifyClick = () => {
 		if (buttonText === "CLASSIFY") {
-			setShowResults(true); // Show classification results
-			setButtonText("CLASSIFY AGAIN"); // Change button text
+			setButtonText("CLASSIFYING...");
 			setIsDisabled(true); // Disable TextArea
+			query({ "input": input }).then((response) => { // Classify
+				const result = response;
+				console.log(result);
+				setNonToxic(result.percentage[0])
+				setToxic(result.percentage[1])
+				
+				setShowResults(true); // Show classification results
+				setButtonText("CLASSIFY AGAIN"); // Change button text
+			}).catch((error) => {
+				// Handle any errors that occur during the query
+				console.error("Error during classification:", error);
+				setButtonText("CLASSIFY"); // Reset button text on error
+			});
 		} else {
 			window.location.reload(); // Refresh the page
 		}
 	};
+
+	const handleInputChange = (event) => {
+		setInput(event.target.value);
+	}
 
 	// Scroll to the results when showResults becomes true
 	useEffect(() => {
@@ -38,9 +58,9 @@ const Index = () => {
 				</div>
 				<div></div>
 			</div>
-			<TextArea isDisabled={isDisabled} /> {/* Pass the disabled state to TextArea */}
+			<TextArea isDisabled={isDisabled} input={input} handleInputChange={handleInputChange} />
 			<div className="flex justify-center mt-[56px]">
-				<Button text={buttonText} onClick={handleClassifyClick} /> {/* Use buttonText state */}
+				<Button text={buttonText} onClick={handleClassifyClick} />
 			</div>
 			{showResults && (
 				<div ref={resultsRef}>
@@ -60,8 +80,8 @@ const Index = () => {
 						/>
 						<Classification
 							sampling="HCAB-SMOTE"
-							percentage1="90"
-							percentage2="90"
+							percentage1={toxic}
+							percentage2={nonToxic}
 							classification1="TOXIC"
 							classification2="NON-TOXIC"
 						/>

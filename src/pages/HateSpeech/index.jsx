@@ -91,18 +91,19 @@ const App = () => {
 
 					<div className="flex justify-between">
 						<Classification
-							sampling="DBHCAB-SMOTE"
+							db = "DB"
+							sampling="HCAB-SMOTE"
 							percentage1={dbhcabHate}
 							percentage2={dbhcabNonHate}
-							classification1="HATE"
-							classification2="NON-HATE"
+							classification1="HATE SPEECH"
+							classification2="NON-HATE SPEECH"
 						/>
 						<Classification
 							sampling="HCAB-SMOTE"
 							percentage1={hcabHate}
 							percentage2={hcabNonHate}
-							classification1="HATE"
-							classification2="NON-HATE"
+							classification1="HATE SPEECH"
+							classification2="NON-HATE SPEECH"
 						/>
 					</div>
 				</div>

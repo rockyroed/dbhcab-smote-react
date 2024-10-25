@@ -26,12 +26,12 @@ const ClassificationContainer = ({
 		>
 			{percentage1 > percentage2 ? (
 				<>
-					<h1 className={`font-normal text-red text-[30px] uppercase`}>{classification1}</h1>
+					<h1 className={`font-normal text-[30px] uppercase`}>{classification1}</h1>
 					<h1 className={`font-semibold text-red text-[50px]`}>{percentage1}%</h1>
 				</>
 			) : (
 				<>
-					<h1 className={`font-normal text-green text-[30px] uppercase`}>{classification2}</h1>
+					<h1 className={`font-normal text-[30px] uppercase`}>{classification2}</h1>
 					<h1 className={`font-semibold text-green text-[50px]`}>{percentage2}%</h1>
 				</>
 			)}

@@ -9,10 +9,13 @@
  */
 import ClassificationContainer from "./ClassificationContainer";
 
-const Index = ({ sampling, percentage1, percentage2, classification1, classification2 }) => {
+const Index = ({ db, sampling, percentage1, percentage2, classification1, classification2 }) => {
 	return (
 		<div className="flex flex-col items-center justify-center gap-y-[12px]">
-			<span className="font-bold text-[20px]">{sampling}</span>
+			<span className="font-bold text-4xl">
+                    <span className="text-7xl text-primary">{db}</span>
+                    {sampling}
+            </span>
 			<ClassificationContainer
 				percentage1={percentage1}
 				percentage2={percentage2}

@@ -87,18 +87,19 @@ const Index = () => {
 
 					<div className="flex justify-between items-center ">
 						<Classification
-							sampling="DBHCAB-SMOTE"
+							db = "DB"
+							sampling="HCAB-SMOTE"
 							percentage1={dbhcabToxic}
 							percentage2={dbhcabNonToxic}
-							classification1="TOXIC"
-							classification2="NON-TOXIC"
+							classification1="TOXIC COMMENT"
+							classification2="NON-TOXIC COMMENT"
 						/>
 						<Classification
 							sampling="HCAB-SMOTE"
 							percentage1={hcabToxic}
 							percentage2={hcabNonToxic}
-							classification1="TOXIC"
-							classification2="NON-TOXIC"
+							classification1="TOXIC COMMENT"
+							classification2="NON-TOXIC COMMENT"
 						/>
 					</div>
 				</div>
